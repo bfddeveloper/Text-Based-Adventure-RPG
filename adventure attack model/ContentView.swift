@@ -59,9 +59,6 @@ struct ContentView: View {
         }
         .padding()
     }
-    func AttackInterface {
-        
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {
