@@ -11,7 +11,7 @@
 		348A286429E4A64C00A009CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348A286329E4A64C00A009CC /* ContentView.swift */; };
 		348A286629E4A64D00A009CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 348A286529E4A64D00A009CC /* Assets.xcassets */; };
 		348A286929E4A64D00A009CC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 348A286829E4A64D00A009CC /* Preview Assets.xcassets */; };
-		348E167629E5F0E200BBD06A /* Attack view.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348E167529E5F0E200BBD06A /* Attack view.swift */; };
+		348E167829E5F20C00BBD06A /* AttackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348E167729E5F20C00BBD06A /* AttackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		348A286329E4A64C00A009CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		348A286529E4A64D00A009CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		348A286829E4A64D00A009CC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		348E167529E5F0E200BBD06A /* Attack view.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attack view.swift"; sourceTree = "<group>"; };
+		348E167729E5F20C00BBD06A /* AttackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +55,7 @@
 			children = (
 				348A286129E4A64C00A009CC /* adventure_attack_modelApp.swift */,
 				348A286329E4A64C00A009CC /* ContentView.swift */,
-				348E167529E5F0E200BBD06A /* Attack view.swift */,
+				348E167729E5F20C00BBD06A /* AttackView.swift */,
 				348A286529E4A64D00A009CC /* Assets.xcassets */,
 				348A286729E4A64D00A009CC /* Preview Content */,
 			);
@@ -140,9 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348E167829E5F20C00BBD06A /* AttackView.swift in Sources */,
 				348A286429E4A64C00A009CC /* ContentView.swift in Sources */,
 				348A286229E4A64C00A009CC /* adventure_attack_modelApp.swift in Sources */,
-				348E167629E5F0E200BBD06A /* Attack view.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

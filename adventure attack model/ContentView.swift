@@ -19,17 +19,14 @@ struct ContentView: View {
     @State var ReactionText = ""
     @State var CanChange = true
     var body: some View {
-        VStack {
-            Text("Your health: \(PlayerHealth)")
-            Text("a monster with bright blue teeth and a iguana shaped body but mich larger aproaches you what do you do?")
-            
-            Button("attack"){
-                if CanChange == true {
-                    ReactionText = "You attack the monster with your fists, the moster comes back ready to pounce at you"
-                    MonsterBlueHP -= PlayerDamage
-                    
-                }
-            }
+        NavigationView{
+            VStack {
+                Text("Your health: \(PlayerHealth)")
+                Text("a monster with bright blue teeth and a iguana shaped body but mich larger aproaches you what do you do?")
+                
+                
+                NavigationLink("Attack", destination: AttackView())
+                        
                 Button("Run"){
                     if CanChange == true {
                         PlayerEscape = Int.random(in: 1..<7)
@@ -48,13 +45,14 @@ struct ContentView: View {
                     }
                 }
                 
-        
-            Text(ReactionText)
-            HStack{
-                Text(String(PlayerHealth))
-                Text(String(MonsterBlueHP))
-            
                 
+                Text(ReactionText)
+                HStack{
+                    Text(String(PlayerHealth))
+                    Text(String(MonsterBlueHP))
+                    
+                    
+                }
             }
         }
         .padding()

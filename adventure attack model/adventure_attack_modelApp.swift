@@ -8,6 +8,12 @@
 import SwiftUI
 
 @main
+
+
+
+
+
+
 struct adventure_attack_modelApp: App {
     var body: some Scene {
         WindowGroup {
