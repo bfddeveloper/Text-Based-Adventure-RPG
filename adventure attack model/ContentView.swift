@@ -18,15 +18,19 @@ struct ContentView: View {
     @State var ReactionText = ""
     @State var engagedMonster = ""
     @State var storyText = 0
+    @State var storytext = ""
     @State var CanChange = true
     @State var playerHealth = 25
     var body: some View {
         NavigationView{
             VStack {
                 Text("Your health: \(playerHealth)")
+                Text(storytext)
+                Button("Continue"){
+        
+                }
                 
-                
-                NavigationLink("Attack", destination: AttackView(engagedMoster: engagedMonster))
+                NavigationLink("Attack", destination: AttackView(engagedMonster: engagedMonster, playerHealth: playerHealth))
                     .onTapGesture {
                         engagedMonster = "BlackRat"
                     }
@@ -43,8 +47,7 @@ struct ContentView: View {
                             
                         } else {
                             ReactionText = "The monster caught as you were trying to sneak away you take 4 damage"
-                            
-                            NavigationLink("Attack", destination: AttackView(engagedMoster: engagedMonster, playerHealth: playerHealth))
+                            playerHealth -= 4
                             
 
                             
@@ -71,6 +74,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+s
 
 
 

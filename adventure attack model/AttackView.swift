@@ -9,15 +9,21 @@ import SwiftUI
 
 struct AttackView: View {
     let engagedMonster : String
+    var playerHealth : Int
     
     var body: some View {
         NavigationView {
+            VStack{
+                Text("THe monster looks up at you grueling and ready to attack but")
+                Text(engagedMonster)
+                Text(String(playerHealth))
+            }
             HStack{
                 Button("use"){
                     
                 }
             }
-            Text("THe monster looks up at you grueling and ready to attack but")
+            
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Attack")
@@ -29,7 +35,7 @@ struct AttackView: View {
 
 struct AttackView_Previews: PreviewProvider {
     static var previews: some View {
-        AttackView(engagedMonster: "yo6")
+        AttackView(engagedMonster: "yo6", playerHealth: 20)
     }
 }
 
