@@ -8,21 +8,28 @@
 import SwiftUI
 
 struct AttackView: View {
-    @State var engagedMoster = EngagedMonster
-    @State var monsterHealth = EngagedMonster.health
+    let engagedMonster : String
+    
     var body: some View {
         NavigationView {
-            Text("")
+            HStack{
+                Button("use"){
+                    
+                }
+            }
+            Text("THe monster looks up at you grueling and ready to attack but")
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Attack")
     }
-        
+//    func checkTheMonster() {
+//        if engagedMonster
+//    }
 }
 
 struct AttackView_Previews: PreviewProvider {
     static var previews: some View {
-        AttackView()
+        AttackView(engagedMonster: "yo6")
     }
 }
 
@@ -36,7 +43,7 @@ struct boss: Codable {
     
 }
 
-struct health: Codable {
+struct Player: Codable {
     
 }
 

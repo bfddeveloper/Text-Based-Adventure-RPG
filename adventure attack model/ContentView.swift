@@ -11,22 +11,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var PlayerHealth = 25
     @State var MonsterBlueHP = 10
     @State var monsterescape = 0
     @State var PlayerEscape = 0
     @State var PlayerDamage = 2
     @State var ReactionText = ""
     @State var engagedMonster = ""
+    @State var storyText = 0
     @State var CanChange = true
+    @State var playerHealth = 25
     var body: some View {
         NavigationView{
             VStack {
-                Text("Your health: \(PlayerHealth)")
-                Text("a monster with bright blue teeth and shaped like alarge black rat.")
+                Text("Your health: \(playerHealth)")
                 
                 
-                NavigationLink("Attack", destination: AttackView())
+                NavigationLink("Attack", destination: AttackView(engagedMoster: engagedMonster))
                     .onTapGesture {
                         engagedMonster = "BlackRat"
                     }
@@ -44,7 +44,10 @@ struct ContentView: View {
                         } else {
                             ReactionText = "The monster caught as you were trying to sneak away you take 4 damage"
                             
-                            PlayerHealth -= 4
+                            NavigationLink("Attack", destination: AttackView(engagedMoster: engagedMonster, playerHealth: playerHealth))
+                            
+
+                            
                         }
                     }
                 }
@@ -52,7 +55,7 @@ struct ContentView: View {
                 
                 Text(ReactionText)
                 HStack{
-                    Text(String(PlayerHealth))
+                    Text(String(playerHealth))
                     Text(String(MonsterBlueHP))
                     
                     
@@ -68,6 +71,10 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+
 
 
 
