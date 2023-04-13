@@ -17,15 +17,19 @@ struct ContentView: View {
     @State var PlayerEscape = 0
     @State var PlayerDamage = 2
     @State var ReactionText = ""
+    @State var engagedMonster = ""
     @State var CanChange = true
     var body: some View {
         NavigationView{
             VStack {
                 Text("Your health: \(PlayerHealth)")
-                Text("a monster with bright blue teeth and a iguana shaped body but mich larger aproaches you what do you do?")
+                Text("a monster with bright blue teeth and shaped like alarge black rat.")
                 
                 
                 NavigationLink("Attack", destination: AttackView())
+                    .onTapGesture {
+                        engagedMonster = "BlackRat"
+                    }
                         
                 Button("Run"){
                     if CanChange == true {
@@ -64,4 +68,6 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
 

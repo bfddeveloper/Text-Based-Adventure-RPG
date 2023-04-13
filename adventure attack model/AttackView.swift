@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct AttackView: View {
+    @State var engagedMoster = EngagedMonster
+    @State var monsterHealth = EngagedMonster.health
     var body: some View {
         NavigationView {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text("")
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Attack")
