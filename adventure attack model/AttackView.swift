@@ -27,7 +27,10 @@ struct AttackView_Previews: PreviewProvider {
 }
 
 struct blackRat: Codable {
-    
+    var health = 10
+    var dmgmax = 5
+    var Attack1 = "The Rat clawed you for"
+    var Attack2 = "The Rat bites you for"
 }
 struct boss: Codable {
     
