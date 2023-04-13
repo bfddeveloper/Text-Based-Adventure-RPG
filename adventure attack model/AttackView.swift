@@ -23,3 +23,19 @@ struct AttackView_Previews: PreviewProvider {
         AttackView()
     }
 }
+
+struct blackRat: Codable {
+    
+}
+struct boss: Codable {
+    
+}
+
+struct health: Codable {
+    
+}
+
+struct Dmg: Codable {
+    
+}
+
