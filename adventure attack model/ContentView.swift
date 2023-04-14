@@ -22,12 +22,13 @@ struct ContentView: View {
     @State var storytext = ""
     @State var CanChange = true
     @State var playerHealth = 25
-    @State var attackInitiation = 0.0
     @State var storyIndex = 0
+    //opacity
     @State var lookOpac = 0.0
     @State var continueOpac = 1.0
-    
-    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "3"]
+    @State var attackInitiation = 0.0
+    //Story Arrays
+    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do"]
     @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall", " there is still just a cave light infront of you it looks closer"]
     @State var descIndex = 0
     
@@ -43,6 +44,10 @@ struct ContentView: View {
                     storyIndex += 1
                     if storyIndex == 1 {
                         lookOpac = 1.0
+                        continueOpac = 0.0
+                    }
+                    if storyIndex == 2 {
+                        attackInitiation = 1.0
                         continueOpac = 0.0
                     }
                 }
@@ -87,14 +92,6 @@ struct ContentView: View {
                 .opacity(attackInitiation)
                 //end
                 
-                
-                Text(ReactionText)
-                HStack{
-                    Text(String(playerHealth))
-                    Text(String(MonsterBlueHP))
-                    
-                    
-                }
             }
         }
         .padding()
