@@ -30,6 +30,7 @@ struct ContentView: View {
     //Story Arrays
     @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do"]
     @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall", " there is still just a cave light infront of you it looks closer"]
+    @State var StorySideArray = [""]
     @State var descIndex = 0
     
     
@@ -44,9 +45,10 @@ struct ContentView: View {
                     storyIndex += 1
                     if storyIndex == 1 {
                         lookOpac = 1.0
-                        continueOpac = 0.0
+                        continueOpac = 1.0
                     }
-                    if storyIndex == 2 {
+                    if storyIndex == 3 {
+                        lookOpac = 0.0
                         attackInitiation = 1.0
                         continueOpac = 0.0
                         engagedMonster = "BlackRat"
@@ -70,7 +72,7 @@ struct ContentView: View {
                     Button("Run"){
                         if CanChange == true {
                             PlayerEscape = Int.random(in: 1..<7)
-                            monsterescape = Int.random(in: 1..<7)
+                            monsterescape = Int.random(in: 1..<2)
                             if PlayerEscape > monsterescape {
                                 ReactionText = "you succesfully ran away without a scratch"
                                 

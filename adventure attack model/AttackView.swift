@@ -10,27 +10,113 @@ import SwiftUI
 struct AttackView: View {
     let engagedMonster : String
     var playerHealth : Int
-    
+    // monster vars
+    @State var monsterHealth = 100
+    @State var MonsterDmgMax = 10
+    //opacity
+    @State var PlayerHealth = 100
+    @State var ReadyOpac = 1.0
+    @State var FightOpac = 0.0
+    @State var PlayerMana = 50
+    @State var Playerdmg = 0
+    @State var monsterDmg = 0
+    @State var Attackline = ""
+    @State var Reaction = ""
+    @State var GameOver = 0.0
     var body: some View {
         NavigationView {
             VStack{
-                Text("THe monster looks up at you grueling and ready to attack butt cheeks")
-                Text(engagedMonster)
-                Text(String(playerHealth))
-            }
-            HStack{
-                Button("use"){
+                HStack {
+                    Text("your health is:" + String(PlayerHealth))
+                    Text("The Monsters health is:" + String(monsterHealth))
+                    Text("Your current mana is " + String(PlayerMana))
+                } .opacity(FightOpac)
+                Button("Ready Yourself"){
+                    if engagedMonster == "BlackRat" {
+                        monsterHealth = 10
+                        MonsterDmgMax = 5
+                        PlayerHealth = playerHealth
+                        FightOpac = 1.0
+                        ReadyOpac = 0.0
+                    }
+                }
+                .opacity(ReadyOpac)
+                
+                
+                Text(Attackline)
+                Text(Reaction)
+                
+                
+                
+                HStack{
+                    Button("use your fists to attack the rat"){
+                        Playerdmg = Int.random(in: 1..<2)
+                        monsterHealth -= Playerdmg
+                        if monsterHealth <= 0 {
+                            Attackline = "YOu killed the \(engagedMonster)"
+                        } else {
+                            monsterDmg = Int.random(in: 1..<MonsterDmgMax)
+                            PlayerHealth -= monsterDmg
+                            Reaction = "The monster did \(String(monsterDmg))"
+                            Attackline = "You did \(Playerdmg) damage, to the monster"
+                            CheckPlayerHealth()
+                            
+                            
+                        }
+                    }
+                    .opacity(FightOpac)
+                    Button("cast fireball 10 mana "){
+                        if PlayerMana >= 10{
+                            Playerdmg = Int.random(in: 1..<4)
+                            monsterHealth -= Playerdmg
+                            PlayerMana -= 10
+                            if monsterHealth <= 0 {
+                                Attackline = "YOu killed the \(engagedMonster)"
+                            } else {
+                                
+                                monsterDmg = Int.random(in: 1..<MonsterDmgMax)
+                                PlayerHealth -= monsterDmg
+                                Reaction = "The monster did \(String(monsterDmg))"
+                                Attackline = "You did \(Playerdmg) damage, to the monster"
+                                CheckPlayerHealth()
+                            }
+                        } else {
+                            Attackline = "You dont have enough mana"
+                        }
+                    }
+                    .opacity(FightOpac)
+                    Button("cast lightining strike 20 mana"){
+                        if PlayerMana >= 20 {
+                            Playerdmg = Int.random(in: 1..<5)
+                            monsterHealth -= Playerdmg
+                            PlayerMana -= 20
+                            if monsterHealth <= 0 {
+                                Attackline = "YOu killed the \(engagedMonster)"
+                            } else {
+                                monsterDmg = Int.random(in: 1..<MonsterDmgMax)
+                                PlayerHealth -= monsterDmg
+                                Reaction = "The monster did \(String(monsterDmg))"
+                                Attackline = "You did \(Playerdmg) damage, to the monster"
+                                CheckPlayerHealth()
+                            }
+                        } else {
+                            Attackline = "You dont have enough mana"
+                        }
+                    }
+                 .opacity(FightOpac)
                     
                 }
             }
-            
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Attack")
     }
-//    func checkTheMonster() {
-//        if engagedMonster
-//    }
+    func CheckPlayerHealth() {
+        if PlayerHealth <= 0 {
+            Attackline = "YOU HAVE DIED"
+            
+        }
+    }
 }
 
 struct AttackView_Previews: PreviewProvider {
@@ -45,15 +131,5 @@ struct blackRat: Codable {
     var Attack1 = "The Rat clawed you for"
     var Attack2 = "The Rat bites you for"
 }
-struct boss: Codable {
-    
-}
 
-struct Player: Codable {
-    
-}
-
-struct Dmg: Codable {
-    
-}
 
