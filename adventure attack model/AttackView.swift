@@ -14,7 +14,7 @@ struct AttackView: View {
     var body: some View {
         NavigationView {
             VStack{
-                Text("THe monster looks up at you grueling and ready to attack butt cheeks")
+                Text("The monster looks up at you grueling and ready to attack butt cheeks")
                 Text(engagedMonster)
                 Text(String(playerHealth))
             }

@@ -36,6 +36,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             VStack {
+                HealthBar(health: 25)
                 Text("Your health: \(playerHealth)")
                 Text(storytext)
                 //
