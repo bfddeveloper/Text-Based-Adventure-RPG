@@ -49,6 +49,7 @@ struct ContentView: View {
                     if storyIndex == 2 {
                         attackInitiation = 1.0
                         continueOpac = 0.0
+                        engagedMonster = "BlackRat"
                     }
                 }
                 .opacity(continueOpac)
@@ -65,9 +66,6 @@ struct ContentView: View {
                 
                 HStack {
                     NavigationLink("Attack", destination: AttackView(engagedMonster: engagedMonster, playerHealth: playerHealth))
-                        .onTapGesture {
-                            engagedMonster = "BlackRat"
-                        }
                     
                     Button("Run"){
                         if CanChange == true {
