@@ -10,6 +10,7 @@ import SwiftUI
 struct AttackView: View {
     let engagedMonster : String
     var playerHealth : Int
+    var storyIndex : Int
     // monster vars
     @State var monsterHealth = 100
     @State var MonsterDmgMax = 10
@@ -23,6 +24,10 @@ struct AttackView: View {
     @State var Attackline = ""
     @State var Reaction = ""
     @State var GameOver = 0.0
+    @State var MonsterDead = 0.0
+    @State var RandomItemSelect = 0
+    @State var itemEarned = ""
+    @State var itemArray = ["Knife (+3 melee)", "Sword (+4 melee)", "Super cool wand (+2 magic)", "cool glowing orb(+2 magical damage)"]
     @State var monsterAttackquotes = ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
     var body: some View {
         NavigationView {
@@ -44,6 +49,9 @@ struct AttackView: View {
                     }
                 }
                 .opacity(ReadyOpac)
+                NavigationLink("continue", destination: ContentView(storyIndex: storyIndex))
+                    .opacity(MonsterDead)
+                
                 Text(Attackline)
                 Text(Reaction)
                 HStack{
@@ -51,7 +59,7 @@ struct AttackView: View {
                         Playerdmg = Int.random(in: 1..<2)
                         monsterHealth -= Playerdmg
                         if monsterHealth <= 0 {
-                            Attackline = "YOu killed the \(engagedMonster)"
+                            CheckMonsterHealth()
                         } else {
                             monsterDmg = Int.random(in: 1..<MonsterDmgMax)
                             PlayerHealth -= monsterDmg
@@ -69,7 +77,7 @@ struct AttackView: View {
                             monsterHealth -= Playerdmg
                             PlayerMana -= 10
                             if monsterHealth <= 0 {
-                                Attackline = "YOu killed the \(engagedMonster)"
+                                CheckMonsterHealth()
                             } else {
                                 
                                 monsterDmg = Int.random(in: 1..<MonsterDmgMax)
@@ -89,7 +97,7 @@ struct AttackView: View {
                             monsterHealth -= Playerdmg
                             PlayerMana -= 20
                             if monsterHealth <= 0 {
-                                Attackline = "YOu killed the \(engagedMonster)"
+                                CheckMonsterHealth()
                             } else {
                                 monsterDmg = Int.random(in: 1..<MonsterDmgMax)
                                 PlayerHealth -= monsterDmg
@@ -113,11 +121,24 @@ struct AttackView: View {
                 )
         }
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("Attack")
     }
     func CheckPlayerHealth() {
         if PlayerHealth <= 0 {
             Attackline = "YOU HAVE DIED"
+            
+        }
+    }
+    func CheckMonsterHealth() {
+        RandomItemSelect = Int.random(in: 0..<4)
+        if monsterHealth <= 0 {
+            
+            Attackline = "You killed the monster you get \(itemEarned)"
+            
+            itemEarned = itemArray[RandomItemSelect]
+            MonsterDead = 1.0
+            FightOpac = 0.0
+            
+            
             
         }
     }
@@ -128,7 +149,7 @@ struct AttackView: View {
 
 struct AttackView_Previews: PreviewProvider {
     static var previews: some View {
-        AttackView(engagedMonster: "yo6", playerHealth: 20)
+        AttackView(engagedMonster: "yo6", playerHealth: 20, storyIndex: 3)
     }
 }
 
