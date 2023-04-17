@@ -23,11 +23,13 @@ struct AttackView: View {
     @State var Attackline = ""
     @State var Reaction = ""
     @State var GameOver = 0.0
-    @State var monsterAttackquotes ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
+    @State var monsterAttackquotes = ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
     var body: some View {
         NavigationView {
-            VStack{
+            ZStack {
+                VStack{
                 HStack {
+                    
                     Text("your health is:" + String(PlayerHealth))
                     Text("The Monsters health is:" + String(monsterHealth))
                     Text("Your current mana is " + String(PlayerMana))
@@ -42,13 +44,8 @@ struct AttackView: View {
                     }
                 }
                 .opacity(ReadyOpac)
-                
-                
                 Text(Attackline)
                 Text(Reaction)
-                
-                
-                
                 HStack{
                     Button("use your fists to attack the rat"){
                         Playerdmg = Int.random(in: 1..<2)
@@ -104,10 +101,16 @@ struct AttackView: View {
                             Attackline = "You dont have enough mana"
                         }
                     }
-                 .opacity(FightOpac)
+                    .opacity(FightOpac)
                     
                 }
             }
+               
+        }
+            .background(
+                    Image("background")
+                        .scaledToFit()
+                )
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Attack")
