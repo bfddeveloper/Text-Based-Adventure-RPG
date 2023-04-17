@@ -23,6 +23,7 @@ struct AttackView: View {
     @State var Attackline = ""
     @State var Reaction = ""
     @State var GameOver = 0.0
+    @State var monsterAttackquotes ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
     var body: some View {
         NavigationView {
             VStack{
@@ -117,6 +118,9 @@ struct AttackView: View {
             
         }
     }
+    func RandomMonsterQuote() {
+        
+    }
 }
 
 struct AttackView_Previews: PreviewProvider {
@@ -131,5 +135,7 @@ struct blackRat: Codable {
     var Attack1 = "The Rat clawed you for"
     var Attack2 = "The Rat bites you for"
 }
+
+
 
 
