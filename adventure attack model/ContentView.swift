@@ -28,16 +28,15 @@ struct ContentView: View {
     @State var continueOpac = 1.0
     @State var attackInitiation = 0.0
     //Story Arrays
-    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light"]
-    @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall", " there is still just a cave light infront of you it looks closer"]
+    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You continue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light"]
+    @State var LookDescArray = [ "There are walls made of old crumbling stone. Infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you, there is nothing but a stone wall", " There is still just a cave light infront of you, but it looks closer"]
     @State var StorySideArray = [""]
     @State var descIndex = 0
-    
     
     var body: some View {
         NavigationView{
             VStack {
-                HealthBar(health: 25)
+                HealthBar(health: CGFloat(playerHealth))
                 Text("Your health: \(playerHealth)")
                 Text(storytext)
                 //
@@ -57,7 +56,7 @@ struct ContentView: View {
                 }
                 .opacity(continueOpac)
                 
-                Button("look around"){
+                Button("Look Around"){
                     storytext = LookDescArray[descIndex]
                     descIndex += 1
                     continueOpac = 1.0
@@ -75,13 +74,13 @@ struct ContentView: View {
                             PlayerEscape = Int.random(in: 1..<7)
                             monsterescape = Int.random(in: 1..<2)
                             if PlayerEscape > monsterescape {
-                                ReactionText = "you succesfully ran away without a scratch"
+                                ReactionText = "You succesfully ran away without a scratch"
                                 
                                 MonsterBlueHP = 0
                                 
                                 
                             } else {
-                                ReactionText = "The monster caught as you were trying to sneak away you take 4 damage"
+                                ReactionText = "The monster caught you as you were trying to sneak away! You take 4 damage"
                                 playerHealth -= 4
                                 
                                 
@@ -116,11 +115,4 @@ struct Story {
     var sceneOneDesc = "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall"
     
 }
-
-
-
-
-
-
-
 

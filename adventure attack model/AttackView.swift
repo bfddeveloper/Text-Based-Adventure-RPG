@@ -28,7 +28,7 @@ struct AttackView: View {
     @State var RandomItemSelect = 0
     @State var itemEarned = ""
     @State var itemArray = ["Knife (+3 melee)", "Sword (+4 melee)", "Super cool wand (+2 magic)", "cool glowing orb(+2 magical damage)"]
-    @State var monsterAttackquotes = ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
+    @State var monsterAttackquotes = ["The monster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
     var body: some View {
         NavigationView {
             ZStack {
@@ -91,7 +91,7 @@ struct AttackView: View {
                         }
                     }
                     .opacity(FightOpac)
-                    Button("cast lightining strike 20 mana"){
+                    Button("cast lightning strike 20 mana"){
                         if PlayerMana >= 20 {
                             Playerdmg = Int.random(in: 1..<5)
                             monsterHealth -= Playerdmg
@@ -106,7 +106,7 @@ struct AttackView: View {
                                 CheckPlayerHealth()
                             }
                         } else {
-                            Attackline = "You dont have enough mana"
+                            Attackline = "You don't have enough mana"
                         }
                     }
                     .opacity(FightOpac)
@@ -132,7 +132,7 @@ struct AttackView: View {
         RandomItemSelect = Int.random(in: 0..<4)
         if monsterHealth <= 0 {
             
-            Attackline = "You killed the monster you get \(itemEarned)"
+            Attackline = "You killed the monster! You get \(itemEarned)"
             
             itemEarned = itemArray[RandomItemSelect]
             MonsterDead = 1.0
