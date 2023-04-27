@@ -27,15 +27,18 @@ struct AttackView: View {
     @State var MonsterDead = 0.0
     @State var RandomItemSelect = 0
     @State var itemEarned = ""
+    @State var AttackHealth = 8
     @State var itemArray = ["Knife (+3 melee)", "Sword (+4 melee)", "Super cool wand (+2 magic)", "cool glowing orb(+2 magical damage)"]
-    @State var monsterAttackquotes = ["The monster looks at you and pounces to bite you and does", "The monster charges and headbutts you"]
+    @State var monsterAttackquotes = ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you", "The monster whips it claw at you and scratches you"]
+    @State var MQoute = ""
     var body: some View {
         NavigationView {
             ZStack {
                 VStack{
+                    HealthBar(health: CGFloat(playerHealth))
                 HStack {
                     
-                    Text("your health is:" + String(PlayerHealth))
+                    Text("your health is:" + String(AttackHealth))
                     Text("The Monsters health is:" + String(monsterHealth))
                     Text("Your current mana is " + String(PlayerMana))
                 } .opacity(FightOpac)
@@ -43,13 +46,20 @@ struct AttackView: View {
                     if engagedMonster == "BlackRat" {
                         monsterHealth = 10
                         MonsterDmgMax = 5
+                        AttackHealth = playerHealth
+                        FightOpac = 1.0
+                        ReadyOpac = 0.0
+                    } else if engagedMonster == "MonsterLizard" {
+                        monsterHealth = 20
+                        MonsterDmgMax = 5
                         PlayerHealth = playerHealth
                         FightOpac = 1.0
                         ReadyOpac = 0.0
                     }
                 }
                 .opacity(ReadyOpac)
-                NavigationLink("continue", destination: ContentView(storyIndex: storyIndex))
+                .buttonStyle(CustomButtonStyle())
+                    NavigationLink("continue", destination: ContentView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
                     .opacity(MonsterDead)
                 
                 Text(Attackline)
@@ -62,8 +72,9 @@ struct AttackView: View {
                             CheckMonsterHealth()
                         } else {
                             monsterDmg = Int.random(in: 1..<MonsterDmgMax)
-                            PlayerHealth -= monsterDmg
-                            Reaction = "The monster did \(String(monsterDmg))"
+                            MQoute = monsterAttackquotes[Int.random(in: 1..<monsterAttackquotes.count)]
+                            AttackHealth -= monsterDmg
+                            Reaction = "\(MQoute) and did \(String(monsterDmg)) damage"
                             Attackline = "You did \(Playerdmg) damage, to the monster"
                             CheckPlayerHealth()
                             
@@ -71,6 +82,7 @@ struct AttackView: View {
                         }
                     }
                     .opacity(FightOpac)
+                    .buttonStyle(CustomButtonStyle())
                     Button("cast fireball 10 mana "){
                         if PlayerMana >= 10{
                             Playerdmg = Int.random(in: 1..<4)
@@ -81,7 +93,27 @@ struct AttackView: View {
                             } else {
                                 
                                 monsterDmg = Int.random(in: 1..<MonsterDmgMax)
-                                PlayerHealth -= monsterDmg
+                                AttackHealth -= monsterDmg
+                                Reaction = "\(MQoute) and did \(String(monsterDmg)) damage"
+                                Attackline = "You did \(Playerdmg) damage, to the monster"
+                                CheckPlayerHealth()
+                            }
+                        } else {
+                            Attackline = "You dont have enough mana"
+                        }
+                    }
+                    .buttonStyle(CustomButtonStyle())
+                    .opacity(FightOpac)
+                    Button("cast lightining strike 20 mana"){
+                        if PlayerMana >= 20 {
+                            Playerdmg = Int.random(in: 1..<5)
+                            monsterHealth -= Playerdmg
+                            PlayerMana -= 20
+                            if monsterHealth <= 0 {
+                                CheckMonsterHealth()
+                            } else {
+                                Reaction = "\(MQoute) and did \(String(monsterDmg)) damage"
+                                AttackHealth -= monsterDmg
                                 Reaction = "The monster did \(String(monsterDmg))"
                                 Attackline = "You did \(Playerdmg) damage, to the monster"
                                 CheckPlayerHealth()
@@ -90,25 +122,7 @@ struct AttackView: View {
                             Attackline = "You dont have enough mana"
                         }
                     }
-                    .opacity(FightOpac)
-                    Button("cast lightning strike 20 mana"){
-                        if PlayerMana >= 20 {
-                            Playerdmg = Int.random(in: 1..<5)
-                            monsterHealth -= Playerdmg
-                            PlayerMana -= 20
-                            if monsterHealth <= 0 {
-                                CheckMonsterHealth()
-                            } else {
-                                monsterDmg = Int.random(in: 1..<MonsterDmgMax)
-                                PlayerHealth -= monsterDmg
-                                Reaction = "The monster did \(String(monsterDmg))"
-                                Attackline = "You did \(Playerdmg) damage, to the monster"
-                                CheckPlayerHealth()
-                            }
-                        } else {
-                            Attackline = "You don't have enough mana"
-                        }
-                    }
+                    .buttonStyle(CustomButtonStyle())
                     .opacity(FightOpac)
                     
                 }
@@ -123,7 +137,7 @@ struct AttackView: View {
         .navigationBarBackButtonHidden(true)
     }
     func CheckPlayerHealth() {
-        if PlayerHealth <= 0 {
+        if AttackHealth <= 0 {
             Attackline = "YOU HAVE DIED"
             
         }
@@ -131,15 +145,10 @@ struct AttackView: View {
     func CheckMonsterHealth() {
         RandomItemSelect = Int.random(in: 0..<4)
         if monsterHealth <= 0 {
-            
-            Attackline = "You killed the monster! You get \(itemEarned)"
-            
             itemEarned = itemArray[RandomItemSelect]
+            Attackline = "You killed the monster you get \(itemEarned)"
             MonsterDead = 1.0
             FightOpac = 0.0
-            
-            
-            
         }
     }
     func RandomMonsterQuote() {
@@ -159,6 +168,8 @@ struct blackRat: Codable {
     var Attack1 = "The Rat clawed you for"
     var Attack2 = "The Rat bites you for"
 }
+
+
 
 
 

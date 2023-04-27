@@ -17,7 +17,7 @@ import SwiftUI
 struct adventure_attack_modelApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(itemEarned: "", AttackHealth: 25)
         }
     }
 }
