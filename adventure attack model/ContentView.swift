@@ -40,86 +40,77 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView{
-            VStack {
-                HealthBar(health: CGFloat(playerHealth))
-                Text(itemEarned)
-                Text("Your health: \(playerHealth)")
-                    .opacity(HealthOpac)
-                Text(storytext)
-                //
-                Button("Continue"){
-                    storytext = StoryArray[storyIndex]
-                    storyIndex += 1
-                    playerHealth = AttackHealth
-                    if storyIndex == 1 {
-                        lookOpac = 1.0
-                        continueOpac = 1.0
-                    }
-                    if storyIndex == 3 {
-                        lookOpac = 0.0
-                        attackInitiation = 1.0
-                        RunOpac = 1.0
-                        continueOpac = 0.0
-                        engagedMonster = "BlackRat"
-                        HealthOpac = 0.0
-                    }
-                    if storyIndex == 4 {
-                        HealthOpac = 1.0
-                    }
-                }
-                .opacity(continueOpac)
-                .buttonStyle(CustomButtonStyle())
-                
-                Button("look around"){
-                    storytext = LookDescArray[descIndex]
-                    descIndex += 1
-                    continueOpac = 1.0
-                    lookOpac = 0.0
-                }
-                .opacity(lookOpac)
-                .buttonStyle(CustomButtonStyle())
-                
-                //atck stuff
-                
-                HStack {
-                    NavigationLink("Attack", destination: AttackView(engagedMonster: engagedMonster, playerHealth: playerHealth, storyIndex: storyIndex))
-                        .opacity(attackInitiation)
-                        .buttonStyle(CustomButtonStyle())
-                    Button("Run"){
-                        if CanChange == true {
-                            PlayerEscape = Int.random(in: 1..<3)
-                            monsterescape = Int.random(in: 1..<9)
-                            if PlayerEscape > monsterescape {
-                                storytext = "you succesfully ran away without a scratch"
-                                continueOpac = 1.0
-                                RunOpac = 0.0
-                                attackInitiation = 0.0
-                                
-                            } else {
-                                storytext = "The monster caught as you were trying to sneak away you take 4 damage. You have no other choice but to attack."
-                                attackInitiation = 1.0
-                                RunOpac = 0.0
-                               
-                                //NavigationLink("HI",destination: AttackView(engagedMonster: engagedMonster, //playerHealth: playerHealth, storyIndex: storyIndex))
-                                playerHealth -= 4
-                                
-                                
-                                
-                                
-                            }
+            ZStack {
+                Color.mint
+                    .ignoresSafeArea()
+                VStack {
+                    HealthBar(health: CGFloat(playerHealth))
+                    Text(itemEarned)
+                    Text("Your health: \(playerHealth)")
+                        .opacity(HealthOpac)
+                    Text(storytext)
+                    Button("Continue"){
+                        storytext = StoryArray[storyIndex]
+                        storyIndex += 1
+                        playerHealth = AttackHealth
+                        if storyIndex == 1 {
+                            lookOpac = 1.0
+                            continueOpac = 1.0
+                        }
+                        if storyIndex == 3 {
+                            lookOpac = 0.0
+                            attackInitiation = 1.0
+                            RunOpac = 1.0
+                            continueOpac = 0.0
+                            engagedMonster = "BlackRat"
+                            HealthOpac = 0.0
+                        }
+                        if storyIndex == 4 {
+                            HealthOpac = 1.0
                         }
                     }
+                    .opacity(continueOpac)
                     .buttonStyle(CustomButtonStyle())
-                    .opacity(RunOpac)
+                    Button("look around"){
+                        storytext = LookDescArray[descIndex]
+                        descIndex += 1
+                        continueOpac = 1.0
+                        lookOpac = 0.0
+                    }
+                    .opacity(lookOpac)
+                    .buttonStyle(CustomButtonStyle())
+                    //atck stuff
+                    HStack {
+                        NavigationLink("Attack", destination: AttackView(engagedMonster: engagedMonster, playerHealth: playerHealth, storyIndex: storyIndex))
+                            .opacity(attackInitiation)
+                            .buttonStyle(CustomButtonStyle())
+                        Button("Run"){
+                            if CanChange == true {
+                                PlayerEscape = Int.random(in: 1..<3)
+                                monsterescape = Int.random(in: 1..<9)
+                                if PlayerEscape > monsterescape {
+                                    storytext = "you succesfully ran away without a scratch"
+                                    continueOpac = 1.0
+                                    RunOpac = 0.0
+                                    attackInitiation = 0.0
+                                } else {
+                                    storytext = "The monster caught as you were trying to sneak away you take 4 damage. You have no other choice but to attack."
+                                    attackInitiation = 1.0
+                                    RunOpac = 0.0
+                                    //NavigationLink("HI",destination: AttackView(engagedMonster: engagedMonster, //playerHealth: playerHealth, storyIndex: storyIndex))
+                                    playerHealth -= 4
+                                }
+                            }
+                        }
+                        .buttonStyle(CustomButtonStyle())
+                        .opacity(RunOpac)
+                    }
+                    //end
                 }
-                //end
-                
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Story")
-        
-        .padding()
     }
     func PlayerHealthPass() {
         playerHealth = AttackHealth
@@ -136,9 +127,7 @@ struct ContentView_Previews: PreviewProvider {
 
 struct Story {
     var Main1 = "You are stranded inside a cave on the ground with nothing but a wand and some food"
-    
     var sceneOneDesc = "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall"
-    
 }
 
 struct CustomButtonStyle: ButtonStyle {
