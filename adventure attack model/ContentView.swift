@@ -31,8 +31,10 @@ struct ContentView: View {
     @State var attackInitiation = 0.0
     @State var RunOpac = 0.0
     @State var HealthOpac = 1.0
+    //timer
+   
     //Story Arrays
-    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light"]
+    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light", "You see the end of the cave infront of you not but 20 feet, there is the bright green wilderness with Trees flowers and trees bearing fruit.", " All of a sudden you hear deep rumbling coming from above you.", "Suddenly, a giant mode sprouts from the ground with a stance ready to attack."]
     @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall", " there is still just a cave light infront of you it looks closer"]
     @State var StorySideArray = [""]
     @State var descIndex = 0
@@ -49,6 +51,10 @@ struct ContentView: View {
                     Text("Your health: \(playerHealth)")
                         .opacity(HealthOpac)
                     Text(storytext)
+                        .frame(minWidth: 150, maxWidth: 300, minHeight: 50, maxHeight: 100)
+                        .multilineTextAlignment(.center)
+                        .position(x: 193, y: 200)
+                    
                     Button("Continue"){
                         storytext = StoryArray[storyIndex]
                         storyIndex += 1
@@ -68,15 +74,25 @@ struct ContentView: View {
                         if storyIndex == 4 {
                             HealthOpac = 1.0
                         }
+                        if storyIndex == 7{
+                            lookOpac = 0.0
+                            attackInitiation = 1.0
+                            RunOpac = 1.0
+                            continueOpac = 0.0
+                            engagedMonster = "Mole"
+                            HealthOpac = 0.0
+                        }
                     }
                     .opacity(continueOpac)
                     .buttonStyle(CustomButtonStyle())
+                    .position(x: 197, y: 120)
                     Button("look around"){
                         storytext = LookDescArray[descIndex]
                         descIndex += 1
                         continueOpac = 1.0
                         lookOpac = 0.0
                     }
+                    .position(x: 197, y: 51)
                     .opacity(lookOpac)
                     .buttonStyle(CustomButtonStyle())
                     //atck stuff
@@ -105,16 +121,16 @@ struct ContentView: View {
                         .buttonStyle(CustomButtonStyle())
                         .opacity(RunOpac)
                     }
+                    .position(x: 200, y: -200)
                     //end
+                    
                 }
             }
         }
         .navigationBarBackButtonHidden(true)
         .navigationTitle("Story")
     }
-    func PlayerHealthPass() {
-        playerHealth = AttackHealth
-    }
+    
     
     
 }
