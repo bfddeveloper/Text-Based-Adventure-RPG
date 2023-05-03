@@ -34,8 +34,8 @@ struct ContentView: View {
     //timer
    
     //Story Arrays
-    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You Coninue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light", "You see the end of the cave infront of you not but 20 feet, there is the bright green wilderness with Trees flowers and trees bearing fruit.", " All of a sudden you hear deep rumbling coming from above you.", "Suddenly, a giant mode sprouts from the ground with a stance ready to attack."]
-    @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing a stone wall", " there is still just a cave light infront of you it looks closer"]
+    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You continue forward through the cave ", "A black rat is standing infront of you ready to attack you what do you do", "You continue towards the light", "You see the end of the cave infront of you not but 20 feet, there is the bright green wilderness with Trees flowers and trees bearing fruit.","There is a piece of fruit on the ground that looks nourishing.", " All of a sudden you hear deep rumbling coming from above you.", "Suddenly, a giant mole sprouts from the ground with a stance ready to attack.", "After yet another perilous battle, you run out of the cave to make sure you arent met with any more foes.", "As you exit the cave you see the landscape of an abandoned and run down city.", "This is the first time ive been above ground in months, maybe even years how long was i in there."]
+    @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing but a stone wall", " there is still just a cave light infront of you it looks closer"]
     @State var StorySideArray = [""]
     @State var descIndex = 0
     
@@ -74,7 +74,7 @@ struct ContentView: View {
                         if storyIndex == 4 {
                             HealthOpac = 1.0
                         }
-                        if storyIndex == 7{
+                        if storyIndex == 8{
                             lookOpac = 0.0
                             attackInitiation = 1.0
                             RunOpac = 1.0
