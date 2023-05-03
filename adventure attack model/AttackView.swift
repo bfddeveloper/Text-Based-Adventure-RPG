@@ -76,7 +76,7 @@ struct AttackView: View {
                         } else if engagedMonster == "Mole" {
                             monsterHealth = 20
                             MonsterDmgMax = 5
-                            PlayerHealth = playerHealth
+                            AttackHealth = playerHealth
                             FightOpac = 1.0
                             ReadyOpac = 0.0
                         }

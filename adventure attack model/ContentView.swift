@@ -31,6 +31,7 @@ struct ContentView: View {
     @State var attackInitiation = 0.0
     @State var RunOpac = 0.0
     @State var HealthOpac = 1.0
+    @State var EatOpac = 0.0
     //timer
    
     //Story Arrays
@@ -74,6 +75,10 @@ struct ContentView: View {
                         if storyIndex == 4 {
                             HealthOpac = 1.0
                         }
+                        if storyIndex == 7 {
+                            EatOpac = 1.0
+                        }
+                        
                         if storyIndex == 8{
                             lookOpac = 0.0
                             attackInitiation = 1.0
@@ -86,6 +91,13 @@ struct ContentView: View {
                     .opacity(continueOpac)
                     .buttonStyle(CustomButtonStyle())
                     .position(x: 197, y: 120)
+                    Button("Eat") {
+                        playerHealth = 25
+                        EatOpac = 0.0
+                        
+                    }
+                    .opacity(EatOpac)
+                    .buttonStyle(CustomButtonStyle())
                     Button("look around"){
                         storytext = LookDescArray[descIndex]
                         descIndex += 1
@@ -149,7 +161,7 @@ struct Story {
 struct CustomButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .frame(width: 100, height: 50)
+            .frame(width: 100, height: 45)
             .font(Font.custom("Marker Felt", size: 16))
             .padding()
             .background(.red).opacity(configuration.isPressed ? 0.0 : 1.0)
