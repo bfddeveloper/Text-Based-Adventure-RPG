@@ -37,7 +37,7 @@ struct AttackView: View {
     @State var itemEarned = ""
     @State var AttackHealth = 8
     @State var itemArray = ["Knife (+3 melee)", "Sword (+4 melee)", "Super cool wand (+2 magic)", "cool glowing orb(+2 magical damage)"]
-    @State var monsterAttackquotes = ["The moster looks at you and pounces to bite you and does", "The monster charges and headbutts you", "The monster whips it claw at you and scratches you"]
+    @State var monsterAttackquotes = ["The monster looks at you and pounces to bite you!", "The monster charges and headbutts you", "The monster whips it claw at you and scratches you"]
     @State var MQoute = ""
     var body: some View {
         NavigationView {
@@ -98,7 +98,7 @@ struct AttackView: View {
                 Text(Attackline)
                 Text(Reaction)
                 HStack{
-                    Button("use your melee to attack the enemy"){
+                    Button("Use your melee to attack"){
                         Playerdmg = Int.random(in: 1..<2)
                         monsterHealth -= Playerdmg
                         if monsterHealth <= 0 {
@@ -117,7 +117,7 @@ struct AttackView: View {
                     }
                     .opacity(FightOpac)
                     .buttonStyle(CustomButtonStyle())
-                    Button("cast fireball 10 mana"){
+                    Button("Cast fireball 10 mana"){
                         if PlayerMana >= 10{
                             Playerdmg = Int.random(in: 1..<4) + PlayerdmgmagicBonus
                             monsterHealth -= Playerdmg
@@ -137,7 +137,7 @@ struct AttackView: View {
                     }
                     .buttonStyle(CustomButtonStyle())
                     .opacity(FightOpac)
-                    Button("cast lightining strike 20 mana"){
+                    Button("Cast lightining 20 mana"){
                         if PlayerMana >= 20 {
                             Playerdmg = Int.random(in: 1..<5) + PlayerdmgmagicBonus
                             monsterHealth -= Playerdmg
@@ -152,7 +152,7 @@ struct AttackView: View {
                                 CheckPlayerHealth()
                             }
                         } else {
-                            Attackline = "You dont have enough mana"
+                            Attackline = "You don't have enough mana"
                         }
                     }
                     .buttonStyle(CustomButtonStyle())
