@@ -50,7 +50,7 @@ struct AttackView: View {
                     ZStack{
                         Rectangle()
                             .fill(.gray)
-                            .frame(width: 300, height: 200)
+                            .frame(width: 300, height: 275)
                             .padding()
                         Image(engagedMonster)
                             .resizable()
