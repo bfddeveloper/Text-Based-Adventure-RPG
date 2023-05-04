@@ -94,9 +94,13 @@ struct AttackView: View {
                     .buttonStyle(CustomButtonStyle())
                     NavigationLink("continue", destination: ContentView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
                     .opacity(MonsterDead)
-                
-                Text(Attackline)
-                Text(Reaction)
+                    VStack {
+                        Text(Attackline)
+                            .padding()
+                        Text(Reaction)
+                    }
+                    .frame(width: 350, height: 150)
+                    .offset(y: -300)
                 HStack{
                     Button("use your melee to attack the enemy"){
                         Playerdmg = Int.random(in: 1..<2)  + Playerdmgmeleebonus

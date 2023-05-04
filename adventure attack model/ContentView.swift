@@ -55,63 +55,68 @@ struct ContentView: View {
                         .frame(minWidth: 150, maxWidth: 300, minHeight: 50, maxHeight: 100)
                         .multilineTextAlignment(.center)
                         .position(x: 193, y: 200)
-                    
-                    Button("Continue"){
-                        storytext = StoryArray[storyIndex]
-                        storyIndex += 1
-                        playerHealth = AttackHealth
-                        if storyIndex == 1 {
-                            lookOpac = 1.0
+                    HStack {
+                        Button("Continue"){
+                            storytext = StoryArray[storyIndex]
+                            storyIndex += 1
+                            playerHealth = AttackHealth
+                            if storyIndex == 1 {
+                                lookOpac = 1.0
+                                continueOpac = 1.0
+                            }
+                            if storyIndex == 3 {
+                                lookOpac = 0.0
+                                attackInitiation = 1.0
+                                RunOpac = 1.0
+                                continueOpac = 0.0
+                                engagedMonster = "BlackRat"
+                                HealthOpac = 0.0
+                            }
+                            if storyIndex == 5 {
+                                HealthOpac = 1.0
+                            }
+                            if storyIndex == 7 {
+                                EatOpac = 1.0
+                            }
+                            
+                            if storyIndex == 8{
+                                EatOpac = 0.0
+                                lookOpac = 0.0
+                                attackInitiation = 1.0
+                                RunOpac = 1.0
+                                continueOpac = 0.0
+                                engagedMonster = "Mole"
+                                HealthOpac = 0.0
+                            }
+                        }
+                        .opacity(continueOpac)
+                        .buttonStyle(CustomButtonStyle())
+                        .offset(x: 50)
+                        Button("Eat") {
+                            playerHealth = 25
+                            EatOpac = 0.0
+                            
+                        }
+                        .offset(y: -100)
+                        .opacity(EatOpac)
+                        .buttonStyle(CustomButtonStyle())
+                        Button("look around"){
+                            storytext = LookDescArray[descIndex]
+                            descIndex += 1
                             continueOpac = 1.0
-                        }
-                        if storyIndex == 3 {
                             lookOpac = 0.0
-                            attackInitiation = 1.0
-                            RunOpac = 1.0
-                            continueOpac = 0.0
-                            engagedMonster = "BlackRat"
-                            HealthOpac = 0.0
                         }
-                        if storyIndex == 4 {
-                            HealthOpac = 1.0
-                        }
-                        if storyIndex == 7 {
-                            EatOpac = 1.0
-                        }
-                        
-                        if storyIndex == 8{
-                            lookOpac = 0.0
-                            attackInitiation = 1.0
-                            RunOpac = 1.0
-                            continueOpac = 0.0
-                            engagedMonster = "Mole"
-                            HealthOpac = 0.0
-                        }
+                        .offset(x:-50)
+                        .opacity(lookOpac)
+                        .buttonStyle(CustomButtonStyle())
                     }
-                    .opacity(continueOpac)
-                    .buttonStyle(CustomButtonStyle())
-                    .position(x: 197, y: 120)
-                    Button("Eat") {
-                        playerHealth = 25
-                        EatOpac = 0.0
-                        
-                    }
-                    .opacity(EatOpac)
-                    .buttonStyle(CustomButtonStyle())
-                    Button("look around"){
-                        storytext = LookDescArray[descIndex]
-                        descIndex += 1
-                        continueOpac = 1.0
-                        lookOpac = 0.0
-                    }
-                    .position(x: 197, y: 51)
-                    .opacity(lookOpac)
-                    .buttonStyle(CustomButtonStyle())
+                    .offset(y:-215)
                     //atck stuff
                     HStack {
                         NavigationLink("Attack", destination: AttackView(engagedMonster: engagedMonster, playerHealth: playerHealth, storyIndex: storyIndex))
                             .opacity(attackInitiation)
                             .buttonStyle(CustomButtonStyle())
+                            .offset(x: -20)
                         Button("Run"){
                             if CanChange == true {
                                 PlayerEscape = Int.random(in: 1..<3)
@@ -132,8 +137,10 @@ struct ContentView: View {
                         }
                         .buttonStyle(CustomButtonStyle())
                         .opacity(RunOpac)
+                        .offset(x: 20)
                     }
-                    .position(x: 200, y: -200)
+                    .offset(y: -300)
+                    
                     //end
                     
                 }
