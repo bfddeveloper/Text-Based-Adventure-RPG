@@ -99,12 +99,12 @@ struct AttackView: View {
                 Text(Reaction)
                 HStack{
                     Button("use your melee to attack the enemy"){
-                        Playerdmg = Int.random(in: 1..<2)
+                        Playerdmg = Int.random(in: 1..<2)  + Playerdmgmeleebonus
                         monsterHealth -= Playerdmg
                         if monsterHealth <= 0 {
                             CheckMonsterHealth()
                         } else {
-                            monsterDmg = Int.random(in: 1..<MonsterDmgMax) + Playerdmgmeleebonus
+                            monsterDmg = Int.random(in: 1..<MonsterDmgMax)
                             MQoute = monsterAttackquotes[Int.random(in: 1..<monsterAttackquotes.count)]
                             AttackHealth -= monsterDmg
                             Attackline = "You did \(Playerdmg) damage, to the monster"
