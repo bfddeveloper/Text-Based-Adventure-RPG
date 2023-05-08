@@ -48,7 +48,6 @@ struct ContentView: View {
                     .ignoresSafeArea()
                 VStack {
                     HealthBar(health: CGFloat(playerHealth))
-                    Text(itemEarned)
                     Text("Your health: \(playerHealth)")
                         .opacity(HealthOpac)
                     Text(storytext)
@@ -97,7 +96,7 @@ struct ContentView: View {
                             EatOpac = 0.0
                             
                         }
-                        .offset(y: -100)
+                        .offset(x: 90, y: 0)
                         .opacity(EatOpac)
                         .buttonStyle(CustomButtonStyle())
                         Button("look around"){
