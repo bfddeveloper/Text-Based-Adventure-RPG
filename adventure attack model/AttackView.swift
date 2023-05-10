@@ -92,7 +92,7 @@ struct AttackView: View {
                     }
                     .opacity(ReadyOpac)
                     .buttonStyle(CustomButtonStyle())
-                    NavigationLink("continue", destination: ContentView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
+                    NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
                     .opacity(MonsterDead)
                     VStack {
                         Text(Attackline)
