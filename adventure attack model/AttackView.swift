@@ -24,6 +24,7 @@ struct AttackView: View {
     @State var PlayerHealth = 100
     @State var ReadyOpac = 1.0
     @State var FightOpac = 0.0
+    @State var DeadOpac = 0.0
     @State var PlayerMana = 50
     @State var Playerdmg = 0
     @State var PlayerdmgmagicBonus = 0
@@ -96,11 +97,15 @@ struct AttackView: View {
                     NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
                     .opacity(MonsterDead)
                     .buttonStyle(CustomButtonStyle2())
+                    NavigationLink("You Died!", destination: DeathView())
+                        .opacity(DeadOpac)
+                        .buttonStyle(CustomButtonStyle2())
                     VStack {
                         Text(Attackline)
                             .padding()
                         Text(Reaction)
                     }
+                    .navigationBarBackButtonHidden(true)
                     .frame(width: 350, height: 150)
                     .offset(y: -175)
                 HStack{
@@ -194,8 +199,9 @@ struct AttackView: View {
     }
     func CheckPlayerHealth() {
         if AttackHealth <= 0 {
-            Attackline = "YOU HAVE DIED"
-            
+            DeadOpac = 1.0
+            ReadyOpac = 0.0
+            FightOpac = 0.0
         }
     }
     func CheckMonsterHealth() {
