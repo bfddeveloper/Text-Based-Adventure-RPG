@@ -46,6 +46,7 @@ struct AttackView: View {
                     .ignoresSafeArea()
                 VStack{
                     Text("Monsters health:" + String(monsterHealth))
+                        .offset(y: 25)
                         .padding()
                     ZStack{
                         Rectangle()
@@ -94,15 +95,16 @@ struct AttackView: View {
                     .buttonStyle(CustomButtonStyle())
                     NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
                     .opacity(MonsterDead)
+                    .buttonStyle(CustomButtonStyle2())
                     VStack {
                         Text(Attackline)
                             .padding()
                         Text(Reaction)
                     }
                     .frame(width: 350, height: 150)
-                    .offset(y: -300)
+                    .offset(y: -175)
                 HStack{
-                    Button("use your melee to attack the enemy"){
+                    Button("use your melee"){
                         Playerdmg = Int.random(in: 1..<2)  + Playerdmgmeleebonus
                         monsterHealth -= Playerdmg
                         if monsterHealth <= 0 {
@@ -120,8 +122,8 @@ struct AttackView: View {
                         }
                     }
                     .opacity(FightOpac)
-                    .buttonStyle(CustomButtonStyle())
-                    Button("Cast fireball 10 mana"){
+                    .buttonStyle(CustomButtonStyle2())
+                    Button("fireball -10 M"){
                         if PlayerMana >= 10{
                             Playerdmg = Int.random(in: 1..<4) + PlayerdmgmagicBonus
                             monsterHealth -= Playerdmg
@@ -139,9 +141,9 @@ struct AttackView: View {
                             Attackline = "You dont have enough mana"
                         }
                     }
-                    .buttonStyle(CustomButtonStyle())
+                    .buttonStyle(CustomButtonStyle2())
                     .opacity(FightOpac)
-                    Button("Cast lightining 20 mana"){
+                    Button("lightining strike -20 M"){
                         if PlayerMana >= 20 {
                             Playerdmg = Int.random(in: 1..<5) + PlayerdmgmagicBonus
                             monsterHealth -= Playerdmg
@@ -159,11 +161,12 @@ struct AttackView: View {
                             Attackline = "You don't have enough mana"
                         }
                     }
-                    .buttonStyle(CustomButtonStyle())
+                    .buttonStyle(CustomButtonStyle2())
                     .opacity(FightOpac)
                     
                     
                 }
+                .offset(x:0, y:-175)
                 
             }
                
@@ -200,6 +203,7 @@ struct AttackView: View {
         if monsterHealth <= 0 {
             itemEarned = itemArray[RandomItemSelect]
             Attackline = "You killed the monster you get \(itemEarned)"
+            Reaction = ""
             MonsterDead = 1.0
             FightOpac = 0.0
         }
@@ -221,6 +225,20 @@ struct blackRat: Codable {
     var Attack1 = "The Rat clawed you for"
     var Attack2 = "The Rat bites you for"
 }
+
+
+struct CustomButtonStyle2: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(width: 90, height: 45)
+            .font(Font.custom("Marker Felt", size: 16))
+            .padding()
+            .background(.red).opacity(configuration.isPressed ? 0.0 : 1.0)
+            .foregroundColor(.white)
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+    }
+}
+
 
 
 
