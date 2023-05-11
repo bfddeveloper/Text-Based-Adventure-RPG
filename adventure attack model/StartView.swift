@@ -94,7 +94,7 @@ struct StartView: View {
                             EatOpac = 0.0
                             
                         }
-                        .offset(y: -100)
+                        .offset(y: 100)
                         .opacity(EatOpac)
                         .buttonStyle(CustomButtonStyle())
                         Button("look around"){

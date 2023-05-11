@@ -9,24 +9,26 @@ import SwiftUI
 
 struct DeathView: View {
     var body: some View {
-        ZStack {
-            Color.mint
-                .ignoresSafeArea()
-            VStack {
-                Text("💀")
-                    .font(Font.custom("Marker Felt", size: 130))
-                Text("YOU DIED, TRY AGAIN?")
-                    .font(Font.custom("Marker Felt", size: 50))
-                    .padding()
-                Text("💀")
-                    .font(Font.custom("Marker Felt", size: 130))
-                    .padding()
+        NavigationView{
+            ZStack {
+                Color.mint
+                    .ignoresSafeArea()
+                VStack {
+                    Text("💀")
+                        .font(Font.custom("Marker Felt", size: 130))
+                    Text("YOU DIED, TRY AGAIN?")
+                        .font(Font.custom("Marker Felt", size: 50))
+                        .padding()
+                    Text("💀")
+                        .font(Font.custom("Marker Felt", size: 130))
+                        .padding()
+                    NavigationLink("Play Again!", destination: StartView(itemEarned: "", AttackHealth: 0))
+                }
             }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
-
 struct DeathView_Previews: PreviewProvider {
     static var previews: some View {
         DeathView()

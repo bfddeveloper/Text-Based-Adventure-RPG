@@ -36,7 +36,7 @@ struct AttackView: View {
     @State var MonsterDead = 0.0
     @State var RandomItemSelect = 0
     @State var itemEarned = ""
-    @State var AttackHealth = 8
+    @State var AttackHealth = 25
     @State var itemArray = ["Knife (+3 melee)", "Sword (+4 melee)", "Super cool wand (+2 magic)", "cool glowing orb(+2 magical damage)"]
     @State var monsterAttackquotes = ["The monster looks at you and pounces to bite you!", "The monster charges and headbutts you", "The monster whips it claw at you and scratches you"]
     @State var MQoute = ""
@@ -72,13 +72,13 @@ struct AttackView: View {
                         if engagedMonster == "BlackRat" {
                             monsterHealth = 10
                             MonsterDmgMax = 5
-                            AttackHealth = playerHealth
+                            AttackHealth = 25
                             FightOpac = 1.0
                             ReadyOpac = 0.0
                         } else if engagedMonster == "Mole" {
                             monsterHealth = 20
                             MonsterDmgMax = 5
-                            AttackHealth = playerHealth
+                            AttackHealth = 25
                             FightOpac = 1.0
                             ReadyOpac = 0.0
                         }
