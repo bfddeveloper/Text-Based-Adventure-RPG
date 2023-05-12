@@ -107,7 +107,7 @@ struct AttackView: View {
                     }
                     .navigationBarBackButtonHidden(true)
                     .frame(width: 350, height: 150)
-                    .offset(y: -175)
+                    .offset(y: -300)
                 HStack{
                     Button("use your melee"){
                         Playerdmg = Int.random(in: 1..<2)  + Playerdmgmeleebonus
@@ -171,7 +171,7 @@ struct AttackView: View {
                     
                     
                 }
-                .offset(x:0, y:-175)
+                .offset(x:0, y:-300)
                 
             }
                
