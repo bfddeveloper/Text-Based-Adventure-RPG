@@ -12,6 +12,7 @@ struct StartView: View {
     var itemEarned : String
     var AttackHealth : Int
     var StoryRestart : Bool
+    @State var GameRestart = false
     @State var MonsterBlueHP = 10
     @State var monsterescape = 0
     @State var PlayerEscape = 0
@@ -52,15 +53,23 @@ struct StartView: View {
                     Text(storytext)
                         .frame(minWidth: 150, maxWidth: 300, minHeight: 50, maxHeight: 100)
                         .multilineTextAlignment(.center)
-                        .position(x: 193, y: 200)
+                        .position(x: 200, y: 200)
                     HStack {
                         Button("Continue"){
-                            if StoryRestart == true {
-                                Restart()
-                            }
                             storytext = StoryArray[storyIndex]
                             storyIndex += 1
                             playerHealth = AttackHealth
+                            GameRestart = StoryRestart
+                            if StoryRestart == true {
+                                if storyIndex == 0 {
+                                    GameRestart = StoryRestart
+                                    if GameRestart == true{
+                                        Restart()
+                                        GameRestart = false
+                                        storyIndex += 1
+                                    }
+                                }
+                            }
                             if storyIndex == 1 {
                                 lookOpac = 1.0
                                 continueOpac = 1.0
@@ -165,6 +174,8 @@ struct StartView: View {
         RunOpac = 0.0
         HealthOpac = 1.0
         EatOpac = 0.0
+        descIndex = 0
+        
     }
     
 }

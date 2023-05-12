@@ -72,13 +72,13 @@ struct AttackView: View {
                         if engagedMonster == "BlackRat" {
                             monsterHealth = 10
                             MonsterDmgMax = 5
-                            AttackHealth = 25
+                            AttackHealth = playerHealth
                             FightOpac = 1.0
                             ReadyOpac = 0.0
                         } else if engagedMonster == "Mole" {
                             monsterHealth = 20
                             MonsterDmgMax = 5
-                            AttackHealth = 25
+                            AttackHealth = playerHealth
                             FightOpac = 1.0
                             ReadyOpac = 0.0
                         }
