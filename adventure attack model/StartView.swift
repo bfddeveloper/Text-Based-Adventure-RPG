@@ -11,6 +11,7 @@ struct StartView: View {
     let story = Story()
     var itemEarned : String
     var AttackHealth : Int
+    var StoryRestart : Bool
     @State var MonsterBlueHP = 10
     @State var monsterescape = 0
     @State var PlayerEscape = 0
@@ -54,6 +55,9 @@ struct StartView: View {
                         .position(x: 193, y: 200)
                     HStack {
                         Button("Continue"){
+                            if StoryRestart == true {
+                                Restart()
+                            }
                             storytext = StoryArray[storyIndex]
                             storyIndex += 1
                             playerHealth = AttackHealth
@@ -144,16 +148,30 @@ struct StartView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .navigationTitle("Story")
     }
     
-    
+    func Restart() {
+        ReactionText = ""
+        engagedMonster = ""
+        storyText = ""
+        storytext = ""
+        CanChange = true
+        playerHealth = 25
+        storyIndex = 0
+        //opacity
+        lookOpac = 0.0
+        continueOpac = 1.0
+        attackInitiation = 0.0
+        RunOpac = 0.0
+        HealthOpac = 1.0
+        EatOpac = 0.0
+    }
     
 }
 
 struct StartView_Previews: PreviewProvider {
     static var previews: some View {
-        StartView(itemEarned: "something", AttackHealth: 20)
+        StartView(itemEarned: "something", AttackHealth: 20, StoryRestart: false)
     }
 }
 

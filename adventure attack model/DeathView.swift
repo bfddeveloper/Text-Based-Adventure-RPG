@@ -22,7 +22,7 @@ struct DeathView: View {
                     Text("💀")
                         .font(Font.custom("Marker Felt", size: 130))
                         .padding()
-                    NavigationLink("Play Again!", destination: StartView(itemEarned: "", AttackHealth: 0))
+                    NavigationLink("Play Again!", destination: StartView(itemEarned: "", AttackHealth: 25, StoryRestart: true))
                 }
             }
         }

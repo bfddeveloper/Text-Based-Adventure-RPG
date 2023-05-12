@@ -94,7 +94,7 @@ struct AttackView: View {
                     }
                     .opacity(ReadyOpac)
                     .buttonStyle(CustomButtonStyle())
-                    NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, storyIndex: storyIndex))
+                    NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, StoryRestart: false, storyIndex: storyIndex))
                     .opacity(MonsterDead)
                     .buttonStyle(CustomButtonStyle2())
                     NavigationLink("You Died!", destination: DeathView())

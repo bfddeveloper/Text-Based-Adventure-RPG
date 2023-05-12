@@ -17,8 +17,9 @@ struct ContentView: View {
                 Color.mint
                     .ignoresSafeArea()
                 VStack {
-                    Text("The Snail")
-                    NavigationLink("Start", destination: StartView(itemEarned: "", AttackHealth: 25))
+                    Text("Besnail")
+                    NavigationLink("Start", destination: StartView(itemEarned: "", AttackHealth: 25, StoryRestart: false))
+                        .buttonStyle(CustomButtonStyle())
                 }
             }
         }
