@@ -34,7 +34,7 @@ struct StartView: View {
     //timer
    
     //Story Arrays
-    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You continue forward through the cave ", "A black rat is standing infront of you about to attack! What do you do?", "You continue towards the light", "You see the end of the cave infront of you not but 20 feet, there is the bright green wilderness with trees, flowers, and trees bearing fruit.","There is a piece of fruit on the ground that looks nourishing.", " All of a sudden you hear deep rumbling coming from above you.", "Suddenly, a giant mole sprouts from the ground with a stance ready to attack.", "After yet another perilous battle, you run out of the cave to make sure you are not met with any more foes.", "As you exit the cave you see the landscape of an abandoned and run down city.", "This is the first time ive been above ground in months, maybe even years! How long was I in there?"]
+    @State var StoryArray = ["You are stranded inside a cave on the ground with nothing but a wand and some food","You continue forward through the cave ", "A black rat is standing infront of you about to attack! What do you do?", "You continue towards the light", "You see the end of the cave infront of you not but 20 feet, there is the bright green wilderness with trees, flowers, and trees bearing fruit.","There is a piece of fruit on the ground that looks nourishing.", " All of a sudden you hear deep rumbling coming from above you.", "Suddenly, a giant mole sprouts from the ground with a stance ready to attack.", "After yet another perilous battle, you run out of the cave to make sure you are not met with any more foes.", "As you exit the cave you see the landscape of an abandoned and run down city.", "This is the first time ive been above ground in months, maybe even years! How long was I in there?", "You walk around through the city and the air starts to feel dry and hot", "Infront of youa small purple flame flickers in the dawning su"]
     @State var LookDescArray = [ "There is walls made of old crumbling stone, infront of you, you can see a faint dot of light which appears to be the entrance to the cave. Behind you there is nothing but a stone wall", " there is still just a cave light infront of you it looks closer"]
     @State var StorySideArray = [""]
     @State var descIndex = 0
@@ -58,7 +58,7 @@ struct StartView: View {
                         Button("Continue"){
                             storytext = StoryArray[storyIndex]
                             storyIndex += 1
-                            playerHealth = AttackHealth
+                            
                             GameRestart = StoryRestart
                             if StoryRestart == true {
                                 if storyIndex == 0 {
@@ -82,8 +82,9 @@ struct StartView: View {
                                 engagedMonster = "BlackRat"
                                 HealthOpac = 0.0
                             }
-                            if storyIndex == 5 {
+                            if storyIndex == 4 {
                                 HealthOpac = 1.0
+                                playerHealth = AttackHealth
                             }
                             if storyIndex == 7 {
                                 EatOpac = 1.0
@@ -97,6 +98,9 @@ struct StartView: View {
                                 continueOpac = 0.0
                                 engagedMonster = "Mole"
                                 HealthOpac = 0.0
+                            }
+                            if storyIndex == 9{
+                                playerHealth = AttackHealth
                             }
                         }
                         .opacity(continueOpac)

@@ -22,7 +22,7 @@
 		34273D0B29E99F0F00F3F58A /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		34851DB729F0373500530AF5 /* ManaBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManaBar.swift; sourceTree = "<group>"; };
 		34851DB92A09463200530AF5 /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
-		348A285E29E4A64C00A009CC /* Besnail.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Besnail.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		348A285E29E4A64C00A009CC /* Octavian.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Octavian.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		348A286129E4A64C00A009CC /* adventure_attack_modelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = adventure_attack_modelApp.swift; sourceTree = "<group>"; };
 		348A286329E4A64C00A009CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		348A286529E4A64D00A009CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		348A285F29E4A64C00A009CC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				348A285E29E4A64C00A009CC /* Besnail.app */,
+				348A285E29E4A64C00A009CC /* Octavian.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -85,9 +85,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		348A285D29E4A64C00A009CC /* Besnail */ = {
+		348A285D29E4A64C00A009CC /* Octavian */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 348A286C29E4A64D00A009CC /* Build configuration list for PBXNativeTarget "Besnail" */;
+			buildConfigurationList = 348A286C29E4A64D00A009CC /* Build configuration list for PBXNativeTarget "Octavian" */;
 			buildPhases = (
 				348A285A29E4A64C00A009CC /* Sources */,
 				348A285B29E4A64C00A009CC /* Frameworks */,
@@ -97,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = Besnail;
+			name = Octavian;
 			productName = "adventure attack model";
-			productReference = 348A285E29E4A64C00A009CC /* Besnail.app */;
+			productReference = 348A285E29E4A64C00A009CC /* Octavian.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				348A285D29E4A64C00A009CC /* Besnail */,
+				348A285D29E4A64C00A009CC /* Octavian */,
 			);
 		};
 /* End PBXProject section */
@@ -349,7 +349,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		348A286C29E4A64D00A009CC /* Build configuration list for PBXNativeTarget "Besnail" */ = {
+		348A286C29E4A64D00A009CC /* Build configuration list for PBXNativeTarget "Octavian" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				348A286D29E4A64D00A009CC /* Debug */,

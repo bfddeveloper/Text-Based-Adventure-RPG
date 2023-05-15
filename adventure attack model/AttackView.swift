@@ -21,7 +21,6 @@ struct AttackView: View {
     @State private var isTimerActive = true
     
     //opacity
-    @State var PlayerHealth = 100
     @State var ReadyOpac = 1.0
     @State var FightOpac = 0.0
     @State var DeadOpac = 0.0
@@ -42,13 +41,11 @@ struct AttackView: View {
     @State var MQoute = ""
     var body: some View {
         NavigationView {
+            
             ZStack {
                 Color.mint
                     .ignoresSafeArea()
                 VStack{
-                    Text("Monsters health:" + String(monsterHealth))
-                        .offset(y: 25)
-                        .padding()
                     ZStack{
                         Rectangle()
                             .fill(.gray)
@@ -61,13 +58,17 @@ struct AttackView: View {
                             .opacity(FightOpac)
                         
                     }
-                    HealthBar(health: CGFloat(playerHealth))
+                    .offset(y: 50)
+                    
+                    Text("Monsters health:" + String(monsterHealth))
+                        .offset(y: 50)
                     HStack {
                         Text("health:" + String(AttackHealth))
                             .padding()
                         Text("mana: " + String(PlayerMana))
                     } .opacity(1.0)
                         .frame(width: 450, height: 50)
+                        .offset(y: 50)
                     Button("Ready Yourself"){
                         if engagedMonster == "BlackRat" {
                             monsterHealth = 10
@@ -94,6 +95,7 @@ struct AttackView: View {
                     }
                     .opacity(ReadyOpac)
                     .buttonStyle(CustomButtonStyle())
+                    .offset(y: 50)
                     NavigationLink("continue", destination: StartView(itemEarned: itemEarned, AttackHealth: AttackHealth, StoryRestart: false, storyIndex: storyIndex))
                     .opacity(MonsterDead)
                     .buttonStyle(CustomButtonStyle2())
@@ -107,7 +109,7 @@ struct AttackView: View {
                     }
                     .navigationBarBackButtonHidden(true)
                     .frame(width: 350, height: 150)
-                    .offset(y: -300)
+                    .offset(y: -250)
                 HStack{
                     Button("use your melee"){
                         Playerdmg = Int.random(in: 1..<2)  + Playerdmgmeleebonus
@@ -171,7 +173,7 @@ struct AttackView: View {
                     
                     
                 }
-                .offset(x:0, y:-300)
+                .offset(x:0, y:-250)
                 
             }
                
